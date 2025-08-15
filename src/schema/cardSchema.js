@@ -10,9 +10,12 @@ export const cardSchema = z.object({
         .min(4, "Card holder name must be at least 4 characters long")
         .max(30, "Card holder name must be at most 30 characters long")
         .regex(/^[a-zA-Z\s]+$/, "Card holder name must contain only letters and spaces"),
-    expiryDate: z
+    expMonth: z
         .string()
-        .regex(/^(0[1-9]|1[0-2])\/\ \d{2}$/, "Expiry date must be in MM/YY format"),
+        .regex(/^(0[1-9]|1[0-2])$/, "Expiry month must be between 01 and 12"),
+    expYear: z
+        .string()
+        .regex(/^\d{2}$/, "Expiry year must be two digits"),
     cvc: z
         .string()
         .length(3, "CVC must be exactly 3 digits")

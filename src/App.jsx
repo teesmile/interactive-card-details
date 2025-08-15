@@ -1,21 +1,19 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import CardPreview from "./components/CardPreview";
 import CardForm from "./components/CardForm";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [cardData, setCardData] = useState({});
 
   return (
-    <main className="flex flex-col min-h-screen justify-center items-center p-30 bg-gray-100">
+    <main className="flex flex-col min-h-screen justify-center items-center p-45 bg-gray-100">
       <div className="bg-white w-full h-4/5 shadow-lg overflow-hidden">
-        <div className="flex w-3/3 ">
+        <div className="flex w-3/3  ">
           {/* left side */}
-          <CardPreview />
+          <CardPreview cardData={cardData} />
           {/* right side */}
-         <CardForm />
+         <CardForm setCardData={setCardData}/>
         </div>
       </div>
     </main>
