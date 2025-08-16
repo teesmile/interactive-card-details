@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { cardSchema } from "../schema/cardSchema";
 import { useEffect } from "react";
 
-export default function CardForm({ setCardData }) {
+export default function CardForm({ setCardData, onSuccess }) {
   const {
     register,
     handleSubmit,
@@ -29,7 +29,10 @@ export default function CardForm({ setCardData }) {
     // setCardData(data); // Update parent state with form data
     localStorage.setItem("cardData", JSON.stringify(data));
     setCardData(data);
-    reset(); // Reset form fields after submission
+    reset(); 
+    if (onSuccess) {
+      onSuccess(); 
+    }
   };
 
   return (
